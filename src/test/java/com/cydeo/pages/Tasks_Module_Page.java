@@ -34,6 +34,9 @@ public class Tasks_Module_Page {
     @FindBy(xpath = "//a/span[@class='app-navigation-entry__title']")
     public List<WebElement>  allListsMenu;
 
+    @FindBy(xpath = "//div[@class='tooltip-inner']")
+    public WebElement errorMessage;
+
     public ArrayList<String> check_if_new_list_appearsInThe_menu(){
         ArrayList<String> allListsTitles=new ArrayList<>();
         for (WebElement eachList : allListsMenu) {

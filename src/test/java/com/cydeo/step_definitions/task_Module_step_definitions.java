@@ -3,6 +3,7 @@ package com.cydeo.step_definitions;
 import com.cydeo.pages.Dashboard_Page;
 import com.cydeo.pages.Login_Page;
 import com.cydeo.pages.Tasks_Module_Page;
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -74,4 +75,13 @@ public class task_Module_step_definitions {
         WebElement color = Driver.getDriver().findElement(By.xpath(locator));
         color.click();
     }
+
+
+    @Then("User should see error message: {string}")
+    public void userShouldSeeErrorMessage(String arg0) {
+        BrowserUtils.waitForVisibility(tasksModulePage.errorMessage,10);
+        String actualErrorMessage = tasksModulePage.errorMessage.getText();
+        Assert.assertEquals(arg0,actualErrorMessage);
+    }
+
 }

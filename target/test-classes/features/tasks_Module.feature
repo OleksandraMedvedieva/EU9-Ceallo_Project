@@ -18,30 +18,36 @@ Feature: Tasks Module Functionality
     Examples: valid list names
       | colorNumber | newListName                                                                                                                                                                                                                                                     |
       | 1           | Love                                                                                                                                                                                                                                                            |
-     | 2           | Ne                                                                                                                                                                                                                                                              |
-     | 3           | New Task                                                                                                                                                                                                                                                        |
-     | 4           | The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt |
+      | 2           | Ne                                                                                                                                                                                                                                                              |
+      | 3           | New Task                                                                                                                                                                                                                                                        |
+      | 4           | The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt |
 
-  @wip
+
   Scenario Outline:  Verify user can dismiss creation of a new list by pressing "Cancel" btn
     When user click on Add list button
     And user types valid list name "<newListName>"
     And user click on the Cancel button
     Then user should not see new list "<newListName>" under the all list menu
-    Examples: valid list names
+    Examples: valid list names + colors
       | newListName                                                                                                                                                                                                                                                     |
-      | Chuck                                                                                                                                                                                                                                                            |
+      | Chuck                                                                                                                                                                                                                                                           |
       | Hi                                                                                                                                                                                                                                                              |
-#      | New Task                                                                                                                                                                                                                                                        |
-#      | The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt |
+      | New Task                                                                                                                                                                                                                                                        |
+      | The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt |
 
-#  Scenario: Verify that user can NOT create a new list of tasks with DUPLICATED task name + color
-#    When user click on Add list button
-#    Then user types duplicated list name
-#    And  user click on duplicated color from the "color picker"
-#    And user click on Save button
-#    Then User should see error message: The name "provided list name" is already used.
-#
+  @wip
+  Scenario Outline: Verify that user can NOT create a new list of tasks with DUPLICATED task name + color
+    When user click on Add list button
+    Then user types valid list name "<duplicatedListName>"
+    And  user click on any color "<duplicatedColorNumber>" from the color picker
+    And user click on Save button
+    Then User should see error message: "<errorMessage>"
+    Examples: duplicated list names + colors
+      | duplicatedColorNumber | errorMessage                         | duplicatedListName |
+      | 1                     | The name "Love" is already used.     | Love               |
+#      | 2                     | The name "Ne" is already used.       | Ne                 |
+#      | 3                     | The name "New Task" is already used. | New Task                                                                                                                                                                                                                                                        |
+
 #  Scenario Outline: Verify if user can create a new task from the different tabs
 #    Then user clicks on the Settings
 #    And user clicks on the Default list dropdown.
