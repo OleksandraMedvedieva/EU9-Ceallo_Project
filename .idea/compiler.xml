@@ -9,5 +9,8 @@
         <module name="EU9-Ceallo_Project" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="EU9-Ceallo_Project" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
