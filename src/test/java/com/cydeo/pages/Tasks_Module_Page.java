@@ -32,10 +32,26 @@ public class Tasks_Module_Page {
     public List<WebElement> colorPickers;
 
     @FindBy(xpath = "//a/span[@class='app-navigation-entry__title']")
-    public List<WebElement>  allListsMenu;
+    public List<WebElement> allListsMenu;
 
     @FindBy(xpath = "//div[@class='tooltip-inner']")
     public WebElement errorMessage;
+
+    @FindBy(xpath = "//input[contains(@placeholder,'task to ')]")
+    public WebElement inputBoxForNewTask;
+
+    @FindBy(xpath = "//div[@class='task-checkbox']")
+    public List<WebElement> listOfAllTasksRelatedToTheCurrentTab;
+
+    @FindBy(xpath = "//button[@class='settings-button']")
+    public WebElement settingsButton;
+
+    @FindBy(xpath = "//select[@id='defaultCalendar']")
+    public WebElement dropdownForDefaultList;
+
+    @FindBy(xpath = "//div[@class='task-checkbox']")
+    public List<WebElement> allCheckBoxesFromTheCurrentList;
+
 
     public ArrayList<String> check_if_new_list_appearsInThe_menu(){
         ArrayList<String> allListsTitles=new ArrayList<>();

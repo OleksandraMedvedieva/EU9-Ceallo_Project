@@ -4,7 +4,9 @@ import com.cydeo.utilities.Driver;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -12,6 +14,50 @@ public class TestMenu {
     Login_Page loginPage = new Login_Page();
     Tasks_Module_Page tasksModulePage = new Tasks_Module_Page();
     Dashboard_Page dashboardPage = new Dashboard_Page();
+
+    @Test
+    public void listName() throws InterruptedException {
+        loginPage.login();
+        dashboardPage.taskModule.click();
+        tasksModulePage.settingsButton.click();
+        //tasksModulePage.dropdownForDefaultList.click();
+        Select select = new Select(tasksModulePage.dropdownForDefaultList);
+        select.selectByVisibleText("Love");
+        System.out.println("select.getFirstSelectedOption().getText() = " + select.getFirstSelectedOption().getText());
+
+        for (WebElement eachList : tasksModulePage.allListsMenu) {
+            String eachTitleName = eachList.getAttribute("title");
+            //System.out.println("eachTitleName = " + eachTitleName);
+            if (eachTitleName.equals("All")){
+                    eachList.click();
+                }
+        }
+        //System.out.println("HI");
+        tasksModulePage.inputBoxForNewTask.click();
+        //System.out.println("there");
+        tasksModulePage.inputBoxForNewTask.sendKeys("Sasha Task" + Keys.ENTER);
+
+        for (WebElement eachTask : tasksModulePage.listOfAllTasksRelatedToTheCurrentTab) {
+            System.out.println("eachTask.getText() = " + eachTask.getText());
+        }
+
+
+
+    }
+
+    @Test
+    public void errorMessage() throws InterruptedException {
+        loginPage.login();
+        dashboardPage.taskModule.click();
+        tasksModulePage.addListButton.click();
+        tasksModulePage.newListInputBox.sendKeys("New Task");
+        Thread.sleep(2000);
+        tasksModulePage.clickOnSaveListButton();
+        String actualErrorMessage = tasksModulePage.errorMessage.getText();
+        System.out.println("actualErrorMessage = " + actualErrorMessage);
+    }
+
+
     @Test
     public void appMenu() throws InterruptedException {
         loginPage.login();
@@ -21,7 +67,7 @@ public class TestMenu {
        WebElement a = Driver.getDriver().findElement(By.xpath("//ul[@id='appmenu']/li/a"));
  }
     @Test
-    public void saveButtonTet() {
+    public void saveButtonTest() {
         loginPage.login();
         dashboardPage.taskModule.click();
         tasksModulePage.addListButton.click();
@@ -30,37 +76,6 @@ public class TestMenu {
         List<WebElement> saveNewTaskButton = Driver.getDriver().findElements(By.xpath("//form//input[@title='Save']"));
         int lastIndex = saveNewTaskButton.size() - 1;
         saveNewTaskButton.get(lastIndex).click();
-    }
-
-    @Test
-    public void selectColorOnColorPicker(){
-        loginPage.login();
-        dashboardPage.taskModule.click();
-        tasksModulePage.addListButton.click();
-        tasksModulePage.newListInputBox.sendKeys("Sasha123");
-
-
-        String locator="//ul[@class='colorpicker-list']";
-        List<WebElement> allColors =  Driver.getDriver().findElements(By.xpath(locator));
-        int lastElement = allColors.size()-1;
-        locator="("+locator+")[" + lastElement +"]"+"/li";
-        System.out.println("locator = " + locator);
-        allColors = Driver.getDriver().findElements(By.xpath(locator));
-
-
-        for (WebElement each : allColors) {
-            String attributeAct = each.getAttribute("style");
-            //String attributeExp = "background-color: rgb(241, 219, 80);";
-            if (attributeAct.contains("rgb(241, 219, 80)")){
-                JavascriptExecutor executor = (JavascriptExecutor) Driver.getDriver();
-                executor.executeScript("arguments[0].click();", each);
-                //each.click();
-                return;
-            }else {
-                System.out.println("attributeAct = " + attributeAct);
-            }
-        }
-
     }
 
 

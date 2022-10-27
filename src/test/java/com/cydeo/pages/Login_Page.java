@@ -23,8 +23,8 @@ public class Login_Page {
 
     public void login(){
         Driver.getDriver().get(ConfigurationReader.getProperty("cealloURl"));
-        userNameOrEmailInputBox.sendKeys("Employee31");
-        passwordInputBox.sendKeys("Employee123");
+        userNameOrEmailInputBox.sendKeys(ConfigurationReader.getProperty("userName"));
+        passwordInputBox.sendKeys(ConfigurationReader.getProperty("password"));
         loginButton.click();
     }
 

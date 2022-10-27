@@ -35,37 +35,41 @@ Feature: Tasks Module Functionality
       | New Task                                                                                                                                                                                                                                                        |
       | The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt |
 
-  @wip
+
   Scenario Outline: Verify that user can NOT create a new list of tasks with DUPLICATED task name + color
     When user click on Add list button
     Then user types valid list name "<duplicatedListName>"
-    And  user click on any color "<duplicatedColorNumber>" from the color picker
-    And user click on Save button
-    Then User should see error message: "<errorMessage>"
-    Examples: duplicated list names + colors
-      | duplicatedColorNumber | errorMessage                         | duplicatedListName |
-      | 1                     | The name "Love" is already used.     | Love               |
-#      | 2                     | The name "Ne" is already used.       | Ne                 |
-#      | 3                     | The name "New Task" is already used. | New Task                                                                                                                                                                                                                                                        |
+    And user should see error message: The name "<duplicatedListName>" is already used.
+    Examples: duplicated list names
+      | duplicatedListName |
+      | Love               |
+      | Ne                 |
+      | Chuck           |
 
-#  Scenario Outline: Verify if user can create a new task from the different tabs
-#    Then user clicks on the Settings
-#    And user clicks on the Default list dropdown.
-#    Then user clicks on one of the options "<options>" of a dropdown
-#    When user clicks on tab "<tabName>"
-#    Then Input box should contain the name of the default selected dropdown in the double quotes: Add a current task to "Name"...
-#    When user types valid task name "<newTask>" in the input box and press Enter
-#    Then New task appears under related list.
-#    Examples: options,new task names
-#      | options  | newTask        |tabName|
-#      | List     | _***           |Current|
-#      | New      | Java questions |All|
-#      | New Task | @gmail.com123  |New Task|
-#      | New List | 1              |List|
-#
-#  #Scenario: Verify if user can create a new task from All tab
-#  #Scenario:  Verify if user can create a new task from any lists (that created by users)
-#
+Scenario Outline: Verify if user can create a new task from the different tabs (created by users)
+  When user clicks on one of tab from the menu "<tabName>"
+  And user types valid task name "<newTask>" in the input box and clicks Enter
+  Then New task name "<newTask>" appears under the related list.
+  Examples: new task names
+    | newTask        | tabName  |
+    | _***           | Love     |
+    | Java questions | Chuck    |
+    | @gmail.com123  | New Task |
+
+  @wip
+  Scenario Outline: Verify if user can create a new task from All and Current tab
+    When user clicks on the Settings
+    And user select one of the options "<options>" from a Default List dropdown
+    When user clicks on one of tab from the menu "<tabName>"
+    And user types valid task name "<newTask>" in the input box and clicks Enter
+    Then New task name "<newTask>" appears under the related list.
+    Examples: options,new task names
+      | newTask        | tabName | options  |
+      | B           | All     | Love     |
+      | PO | Current | New Task |
+
+
+
 #  Scenario:Verify if user can add any task to the list of Completed tasks
 #  by clicking on the checkbox near the task name
 #    And user clicks on tab "<tabName>"

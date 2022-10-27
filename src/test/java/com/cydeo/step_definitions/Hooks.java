@@ -8,7 +8,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
-    @After (order = 1)
+    @After
     public void teardownScenario(Scenario scenario){
         if (scenario.isFailed()){
             byte[] screenshots = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
