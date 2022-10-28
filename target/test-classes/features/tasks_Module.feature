@@ -32,9 +32,8 @@ Feature: Tasks Module Functionality
       | newListName                                                                                                                                                                                                                                                     |
       | Chuck                                                                                                                                                                                                                                                           |
       | Hi                                                                                                                                                                                                                                                              |
-      | New Task                                                                                                                                                                                                                                                        |
-      | The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt |
-
+      | New                                                                                                                                                                                                                                                         |
+      | Phe quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt |
 
   Scenario Outline: Verify that user can NOT create a new list of tasks with DUPLICATED task name + color
     When user click on Add list button
@@ -44,7 +43,7 @@ Feature: Tasks Module Functionality
       | duplicatedListName |
       | Love               |
       | Ne                 |
-      | Chuck           |
+      | New Task           |
 
 Scenario Outline: Verify if user can create a new task from the different tabs (created by users)
   When user clicks on one of tab from the menu "<tabName>"
@@ -53,10 +52,10 @@ Scenario Outline: Verify if user can create a new task from the different tabs (
   Examples: new task names
     | newTask        | tabName  |
     | _***           | Love     |
-    | Java questions | Chuck    |
+    | Java questions | Ne    |
     | @gmail.com123  | New Task |
 
-  @wip
+
   Scenario Outline: Verify if user can create a new task from All and Current tab
     When user clicks on the Settings
     And user select one of the options "<options>" from a Default List dropdown
@@ -64,31 +63,41 @@ Scenario Outline: Verify if user can create a new task from the different tabs (
     And user types valid task name "<newTask>" in the input box and clicks Enter
     Then New task name "<newTask>" appears under the related list.
     Examples: options,new task names
-      | newTask        | tabName | options  |
-      | B           | All     | Love     |
-      | PO | Current | New Task |
+      | newTask | tabName | options  |
+      | B       | All     | Love     |
+      | PO      | Current | New Task |
+
+  @wip
+  Scenario Outline:Verify if user can add any task to the list of Completed tasks
+  by clicking on the checkbox near the task name
+    When user clicks on the tab "<tabName>" from the menu
+    And user clicks on the checkbox near the task name "<newTask>" and see 1 Completed Task link on the screen
+    When user clicks on "Completed" tab from the menu
+    Then user can see recently selected task "<newTask>" in this list.
+    Examples: task names
+      | newTask |tabName|
+      | B       |Love   |
+      | PO      |New Task|
 
 
+Scenario Outline: Verify if user can add any task to the list of Important tasks by clicking on the
+star icon on the right side of task line
+When user clicks on one of tab from the menu "<tabName>"
+And user clicks on the star icon near the task name"<newTask>" and this icon color is changes
+When user clicks on "Important" tab from the menu
+Then user can see recently selected task "<newTask>" in this list.
 
-#  Scenario:Verify if user can add any task to the list of Completed tasks
-#  by clicking on the checkbox near the task name
-#    And user clicks on tab "<tabName>"
-#    Then user clicks on the checkbox near the "<newTask>"
-#    Then 1 Completed Task link appears on the screen.
-#  And Total amount of the tasks from the "related list*"/All tab and Current tab (on the menu bar) decreased by 1.
-#  And Total amount of the tasks from the Completed tab (on the menu bar) increased by 1.
-#
-#
-#  Scenario: Verify if user can add any task to the list of Important tasks by clicking on the
-#  star icon on the right side of task line
-#    And user clicks on tab "<tabName>"
-#    Then user clicks on the star icon near the "<newTask>"
-#    When user clicks on Important tab from the menu.
-#    Then User can see recently selected task "<newTask>" in this list.
-#
-#  Scenario: Verify if user can see the number of all uncompleted tasks next to the Current tab
-#    And user clicks on tab "<tabName>"
-#    When user types valid task name "<newTask>" in the input box and press Enter
-#    Then New task appears under related list.
-#    And Total amount of all uncompleted tasks next to the Current tab increase by 1.
-#    And Total amount of all uncompleted tasks next to the Current tab equals to sum of all tasks and subsastsk from each list from the menu.
+  Examples: task names
+    | newTask |tabName|
+    | B       |Love   |
+    | PO      |New Task|
+
+  @wip
+  Scenario: Verify if user can see the number of all uncompleted tasks next to the Current tab
+    When user clicks on the Settings
+    And user select for each of the option of Smart Collection dropdown value "Visible"
+    When user clicks on "Current" tab from the menu
+    Then User can see amount of all uncompleted tasks next to the Current tab
+#Total amount of all uncompleted tasks next to the
+# Current tab equals to sum of all tasks and subsastsk
+# from each list from the menu.

@@ -74,7 +74,7 @@ $(document).ready(function() {
   <tbody>
     <tr class="info">
       <td>No Name (add projectName to cucumber-reporting.properties)</td>
-      <td>27 Oct 2022, 11:35</td>
+      <td>27 Oct 2022, 16:47</td>
     </tr>
   </tbody>
 </table>
@@ -127,18 +127,18 @@ $(document).ready(function() {
         <tbody>
         <tr>
           <td class="tagname">Tasks Module Functionality</td>
-          <td      class="passed"    >5</td>
-          <td      class="failed"    >1</td>
+          <td      class="passed"    >2</td>
           <td >0</td>
+          <td     class="skipped"   >3</td>
           <td >0</td>
-          <td >0</td>
+          <td   class="undefined" >1</td>
           <td class="total">6</td>
 
           <td >0</td>
           <td  class="failed"    >1</td>
           <td class="total">1</td>
 
-          <td class="duration" data-value="47914260600">47.914</td>
+          <td class="duration" data-value="3997100">0.003</td>
           <td class="failed">Failed</td>
         </tr>
         </tbody>
@@ -191,7 +191,7 @@ $(document).ready(function() {
 </div>
 
 
-  <span class="lead-duration duration">37.053</span>
+  <span class="lead-duration duration">0.002</span>
 
 
   <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-1">
@@ -234,7 +234,7 @@ $(document).ready(function() {
   <span class="keyword indention">Given</span>
   <span class="name">user is on the Ceallo dashboard page</span>
 
-  <span class="lead-duration duration">33.467</span>
+  <span class="lead-duration duration">0.002</span>
 
 </div>
 
@@ -261,7 +261,7 @@ $(document).ready(function() {
   <span class="keyword indention">And</span>
   <span class="name">user click on Tasks module</span>
 
-  <span class="lead-duration duration">3.586</span>
+  <span class="lead-duration duration">0.000</span>
 
 </div>
 
@@ -301,21 +301,21 @@ $(document).ready(function() {
 </div>
 
 
-  <span class="lead-duration duration">10.860</span>
+  <span class="lead-duration duration">0.000</span>
 
 
   <span data-toggle="collapse" class=" collapsable-control" data-target="#element-3">
 
 <div class="brief failed">
-  <span class="keyword indention">Scenario Outline</span>
-  <span class="name">Verify that user can NOT create a new list of tasks with DUPLICATED task name + color</span>
+  <span class="keyword indention">Scenario</span>
+  <span class="name">Verify if user can add any task to the list of Completed tasks</span>
 
 
      <i class="chevron fa fa-fw"></i>
 </div>
 
   </span>
-  <div class="description indention"></div>
+  <div class="description indention">  by clicking on the checkbox near the task name</div>
 
   <div id="element-3" class="collapse collapsable-details  in ">
 
@@ -340,11 +340,90 @@ $(document).ready(function() {
       <div class="step">
 
 
-<div class="brief step-name-When passed">
+<div class="brief step-name-When undefined">
   <span class="keyword indention">When</span>
-  <span class="name">user click on Add list button</span>
+  <span class="name">user clicks on one of tab from the menu as below</span>
 
-  <span class="lead-duration duration">0.267</span>
+  <span class="lead-duration duration">0.000</span>
+
+</div>
+
+
+
+
+
+
+
+          <table class="step-arguments">
+              <tr>
+                  <td>All</td>
+              </tr>
+              <tr>
+                  <td>Current</td>
+              </tr>
+              <tr>
+                  <td>Love</td>
+              </tr>
+              <tr>
+                  <td>New Task</td>
+              </tr>
+              <tr>
+                  <td>Chuck</td>
+              </tr>
+          </table>
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-And skipped">
+  <span class="keyword indention">And</span>
+  <span class="name">user clicks on the checkbox near the task name</span>
+
+  <span class="lead-duration duration">0.000</span>
+
+</div>
+
+
+
+
+
+
+
+          <table class="step-arguments">
+              <tr>
+                  <td>B</td>
+              </tr>
+              <tr>
+                  <td>PO</td>
+              </tr>
+          </table>
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="step">
+
+
+<div class="brief step-name-And skipped">
+  <span class="keyword indention">And</span>
+  <span class="name">user clicks on Completed tab from the menu</span>
+
+  <span class="lead-duration duration">0.000</span>
 
 </div>
 
@@ -367,38 +446,11 @@ $(document).ready(function() {
       <div class="step">
 
 
-<div class="brief step-name-Then passed">
+<div class="brief step-name-Then skipped">
   <span class="keyword indention">Then</span>
-  <span class="name">user types valid list name <span class="argument">&quot;Love&quot;</span></span>
+  <span class="name">user can see recently completed task in this list.</span>
 
-  <span class="lead-duration duration">0.351</span>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </div>
-      <div class="step">
-
-
-<div class="brief step-name-And passed">
-  <span class="keyword indention">And</span>
-  <span class="name">user click on Save button</span>
-
-  <span class="lead-duration duration">0.159</span>
+  <span class="lead-duration duration">0.000</span>
 
 </div>
 
@@ -406,72 +458,6 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-      </div>
-      <div class="step">
-
-
-<div class="brief step-name-And failed">
-  <span class="keyword indention">And</span>
-  <span class="name">user should see error message: The name <span class="argument">&quot;Love&quot;</span> is already used.</span>
-
-  <span class="lead-duration duration">10.081</span>
-
-</div>
-
-
-
-
-
-
-  <div class="inner-level">
-    <div class="message indention">
-      <div data-toggle="collapse" class=" collapsable-control" data-target="#msg-5">
-          <a>org.openqa.selenium.NoSuchElementException:</a>
-      </div>
-      <div id="msg-5" class="collapse collapsable-details  in ">
-        <pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@class='tooltip-inner']&quot;}
-  (Session info: chrome=107.0.5304.62)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'DESKTOP-HKIAK0V', ip: '192.168.0.102', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.12'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.62, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\0136~1\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:50344}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: e652299ed816d1029867d09e98af322b
-*** Element info: {Using=xpath, value=//div[@class='tooltip-inner']}
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at com.sun.proxy.$Proxy20.getText(Unknown Source)
-	at com.cydeo.step_definitions.task_Module_step_definitions.userShouldSeeErrorMessageTheNameIsAlreadyUsed(task_Module_step_definitions.java:89)
-	at &#10045;.user should see error message: The name &quot;Love&quot; is already used.(file:///C:/Users/&#1050;&#1086;&#1084;&#1087;&#1083;&#1102;&#1082;&#1090;&#1077;&#1088;/IdeaProjects/EU9-Ceallo_Project/src/test/resources/features/tasks_Module.feature:43)
-</pre>
-      </div>
-    </div>
-  </div>
 
 
 
@@ -491,7 +477,7 @@ Session ID: e652299ed816d1029867d09e98af322b
 
 
   <div class="inner-level hooks-element-after">
-    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#after-6">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#after-5">
 
 <div class="brief passed">
   <span class="keyword indention">Hooks</span>
@@ -503,13 +489,13 @@ Session ID: e652299ed816d1029867d09e98af322b
 
     </div>
 
-    <div id="after-6" class="inner-level collapse collapsable-details ">
+    <div id="after-5" class="inner-level collapse collapsable-details ">
         <div class="hook">
           <div class="brief passed">
             <span class="keyword indention">After</span>
               <span class="location name">com.cydeo.step_definitions.Hooks.teardownScenario(io.cucumber.java.Scenario)</span>
 
-  <span class="lead-duration duration">1.373</span>
+  <span class="lead-duration duration">0.002</span>
 
           </div>
 
@@ -518,21 +504,6 @@ Session ID: e652299ed816d1029867d09e98af322b
 
 
 
-  <div class="embeddings inner-level">
-  <div class="embedding indention">
-    <div data-toggle="collapse" data-target="#embedding-7" class="collapsable-control">
-      <a>Verify that user can NOT create a new list of tasks with DUPLICATED task name + color</a>
-      <a href="embeddings/embedding_922337064.png" download target="_blank">
-        <span class="download-button glyphicon glyphicon-download-alt"></span>
-      </a>
-    </div>
-    <div id="embedding-7" class="collapse collapsable-details ">
-      <div class="embedding-content">
-        <img src="embeddings/embedding_922337064.png">
-      </div>
-    </div>
-  </div>
-  </div>
 
         </div>
     </div>

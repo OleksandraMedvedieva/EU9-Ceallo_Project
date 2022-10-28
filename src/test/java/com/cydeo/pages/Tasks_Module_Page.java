@@ -40,7 +40,7 @@ public class Tasks_Module_Page {
     @FindBy(xpath = "//input[contains(@placeholder,'task to ')]")
     public WebElement inputBoxForNewTask;
 
-    @FindBy(xpath = "//div[@class='task-checkbox']")
+    @FindBy(xpath = "//div[@class='title']/span")
     public List<WebElement> listOfAllTasksRelatedToTheCurrentTab;
 
     @FindBy(xpath = "//button[@class='settings-button']")
@@ -49,9 +49,36 @@ public class Tasks_Module_Page {
     @FindBy(xpath = "//select[@id='defaultCalendar']")
     public WebElement dropdownForDefaultList;
 
+    @FindBy(id = "visibilityCollection-starred")
+    public WebElement importantDropdown;
+
+    @FindBy(id = "visibilityCollection-today")
+    public WebElement todayDropdown;
+
+    @FindBy(id = "visibilityCollection-completed")
+    public WebElement completedDropdown;
+
+    @FindBy(id = "visibilityCollection-week")
+    public WebElement weekDropdown;
+
+    @FindBy(id = "visibilityCollection-all")
+    public WebElement allDropdown;
+
+    @FindBy(id = "visibilityCollection-current")
+    public WebElement currentDropdown;
+
+
     @FindBy(xpath = "//div[@class='task-checkbox']")
     public List<WebElement> allCheckBoxesFromTheCurrentList;
 
+    @FindBy(xpath = "//span[.='1 Completed Task']")
+    public WebElement oneCompletedTaskLink;
+
+    @FindBy(xpath = "//button[@class='inline task-star reactive no-nav']/span")
+    public List<WebElement> allStarIconsFromTheCurrentList;
+
+    @FindBy (xpath = "//button[@class='icon action-item__menutoggle icon-checkmark--down']")
+    public WebElement visibilityCheck;
 
     public ArrayList<String> check_if_new_list_appearsInThe_menu(){
         ArrayList<String> allListsTitles=new ArrayList<>();

@@ -1,6 +1,9 @@
 package com.cydeo.pages;
 
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
+import com.github.javafaker.Faker;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,6 +17,32 @@ public class TestMenu {
     Login_Page loginPage = new Login_Page();
     Tasks_Module_Page tasksModulePage = new Tasks_Module_Page();
     Dashboard_Page dashboardPage = new Dashboard_Page();
+    Faker faker = new Faker();
+
+    @Test
+    public void checkboxes() throws InterruptedException {
+        loginPage.login();
+        dashboardPage.taskModule.click();
+        Thread.sleep(3000);
+        for (WebElement eachList : tasksModulePage.allListsMenu) {
+            if(eachList.getText().equals("Ne")){
+                System.out.println("eachList.getText() = " + eachList.getText());
+                eachList.click();
+            }
+        }
+
+        List<WebElement> allTasks = tasksModulePage.listOfAllTasksRelatedToTheCurrentTab;
+            System.out.println("allTasks = " + allTasks.size());
+
+    }
+
+
+
+
+
+
+
+
 
     @Test
     public void listName() throws InterruptedException {
