@@ -79,7 +79,6 @@ Scenario Outline: Verify if user can create a new task from the different tabs (
       | B       |Love   |
       | PO      |New Task|
 
-
 Scenario Outline: Verify if user can add any task to the list of Important tasks by clicking on the
 star icon on the right side of task line
 When user clicks on one of tab from the menu "<tabName>"

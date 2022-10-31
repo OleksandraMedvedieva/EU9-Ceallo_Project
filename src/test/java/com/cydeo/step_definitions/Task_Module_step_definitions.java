@@ -5,7 +5,6 @@ import com.cydeo.pages.Login_Page;
 import com.cydeo.pages.Tasks_Module_Page;
 import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
-import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,7 +12,6 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -24,7 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class task_Module_step_definitions {
+public class Task_Module_step_definitions {
 
     Login_Page loginPage = new Login_Page();
     Dashboard_Page dashboardPage = new Dashboard_Page();
@@ -195,7 +193,7 @@ public class task_Module_step_definitions {
         }
     }
 
-
+// WIP    !!!!!!
     @Then("User can see amount of all uncompleted tasks next to the Current tab")
     public void userCanSeeAmountOfAllUncompletedTasksNextToTheCurrentTab() {
         List<WebElement> allTasksFromTheList = tasksModulePage.listOfAllTasksRelatedToTheCurrentTab;

@@ -20,6 +20,39 @@ public class TestMenu {
     Faker faker = new Faker();
 
     @Test
+    public void status() throws InterruptedException {
+        loginPage.login();
+        dashboardPage.userIconButton.click();
+        dashboardPage.currentUserStatus.click();
+        List<WebElement> allStatusList = dashboardPage.allUserStatuses;
+        for (WebElement eachstatus : allStatusList) {
+            if (eachstatus.getText().equals("Online")){
+                eachstatus.click();
+                Thread.sleep(5000);
+
+            }
+        }
+        Thread.sleep(5000);
+        dashboardPage.close.click();
+        dashboardPage.userIconButton.click();
+        System.out.println("dashboardPage.currentUserStatus.getText() = " + dashboardPage.currentUserStatus.getText());
+
+        for (WebElement eachstatus : allStatusList) {
+            if (eachstatus.getText().equals("Away")){
+                eachstatus.click();
+                Thread.sleep(5000);
+
+            }
+        }
+        Thread.sleep(5000);
+        dashboardPage.close.click();
+        dashboardPage.userIconButton.click();
+        System.out.println("dashboardPage.currentUserStatus.getText() = " + dashboardPage.currentUserStatus.getText());
+
+
+    }
+
+    @Test
     public void checkboxes() throws InterruptedException {
         loginPage.login();
         dashboardPage.taskModule.click();
