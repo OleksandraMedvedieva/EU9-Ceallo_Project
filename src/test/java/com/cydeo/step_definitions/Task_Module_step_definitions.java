@@ -28,8 +28,6 @@ public class Task_Module_step_definitions {
     Dashboard_Page dashboardPage = new Dashboard_Page();
     Tasks_Module_Page tasksModulePage = new Tasks_Module_Page();
 
-    //Faker faker = new Faker();
-
     @Given("user is on the Ceallo dashboard page")
     public void user_is_on_the_ceallo_dashboard_page() {
         loginPage.login();
@@ -38,6 +36,7 @@ public class Task_Module_step_definitions {
     public void user_click_on_tasks_module() {
         dashboardPage.taskModule.click();
         BrowserUtils.waitFor(2);
+        //BrowserUtils.waitForVisibility(tasksModulePage.visibilityCheck,5);
     }
 
     @When("user click on Add list button")
@@ -53,13 +52,10 @@ public class Task_Module_step_definitions {
     public void user_click_on_save_button() {
        tasksModulePage.clickOnSaveListButton();
     }
-    @Then("user should see new list {string} with valid name and color under the all list menu")
+    @Then("verify user see new list {string} under the list menu")
     public void user_should_see_new_list_with_valid_name_and_color_under_the_all_list_menu(String validListName) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
         WebElement element = Driver.getDriver().findElement(By.partialLinkText(validListName));
-        wait.until(
-                ExpectedConditions.visibilityOf(element)
-        );
+        BrowserUtils.waitForVisibility(element,10);
         ArrayList<String> actualLists = tasksModulePage.check_if_new_list_appearsInThe_menu();
         Assert.assertTrue(actualLists.contains(validListName));
     }
@@ -69,7 +65,7 @@ public class Task_Module_step_definitions {
         tasksModulePage.clickOnCancelListButton();
     }
 
-    @Then("user should not see new list {string} under the all list menu")
+    @Then("verify user should NOT see new list {string} under the list menu")
     public void userShouldNotSeeNewListUnderTheAllListMenu(String validListName) {
         ArrayList<String> actualLists = tasksModulePage.check_if_new_list_appearsInThe_menu();
         Assert.assertFalse(actualLists.contains(validListName));
@@ -83,8 +79,9 @@ public class Task_Module_step_definitions {
         color.click();
     }
 
-    @And("user should see error message: The name {string} is already used.")
+    @And("verify user see error message: The name {string} is already used.")
     public void userShouldSeeErrorMessageTheNameIsAlreadyUsed(String listName) {
+        //BrowserUtils.waitFor(2);
         BrowserUtils.waitForVisibility(tasksModulePage.errorMessage,5);
         String actualErrorMessage = tasksModulePage.errorMessage.getText();
         String expectedErrorMessage = "The name \"" + listName + "\" is already used.";
@@ -110,7 +107,7 @@ public class Task_Module_step_definitions {
         tasksModulePage.inputBoxForNewTask.sendKeys(taskName + Keys.ENTER);
     }
 
-    @Then("New task name {string} appears under the related list.")
+    @Then("verify new task name {string} appears under the related list.")
     public void newTaskNameAppearsUnderTheRelatedList(String taskName) {
         for (WebElement eachTask : tasksModulePage.listOfAllTasksRelatedToTheCurrentTab) {
             if (eachTask.getText().equals(taskName)){
@@ -163,7 +160,7 @@ public class Task_Module_step_definitions {
         }
     }
 
-    @Then("user can see recently selected task {string} in this list.")
+    @Then("verify user can see recently selected task {string} in this list.")
     public void userCanSeeRecentlyCompletedTaskInThisList(String taskName) {
         List<WebElement> allTasksFromTheList = tasksModulePage.listOfAllTasksRelatedToTheCurrentTab;
         for (int i = 0; i < allTasksFromTheList.size(); i++) {
@@ -193,12 +190,11 @@ public class Task_Module_step_definitions {
         }
     }
 
-// WIP    !!!!!!
-    @Then("User can see amount of all uncompleted tasks next to the Current tab")
+    @Then("verify ser can see amount of all uncompleted tasks next to the Current tab")
     public void userCanSeeAmountOfAllUncompletedTasksNextToTheCurrentTab() {
         List<WebElement> allTasksFromTheList = tasksModulePage.listOfAllTasksRelatedToTheCurrentTab;
         int expectedAmountOfTasks = allTasksFromTheList.size();
-        int actualAmountOfTasks =-6;
+        int actualAmountOfTasks =0;
 
         for (WebElement eachList : tasksModulePage.allListsMenu) {
             if(eachList.getText().equals("Important") || eachList.getText().equals("All")
@@ -206,20 +202,15 @@ public class Task_Module_step_definitions {
                     || eachList.getText().equals("Current")){
                 continue;
             }
-
+            if(eachList.getAttribute("title").contains("Add List…")){
+                continue;
+            }
             eachList.click();
             Driver.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
             List<WebElement> allTasks = tasksModulePage.listOfAllTasksRelatedToTheCurrentTab;
             actualAmountOfTasks+=allTasks.size();
-            System.out.println(eachList.getText() + " - " + allTasks.size());
         }
-
-        System.out.println("expectedAmountOfTasks = " + expectedAmountOfTasks);
-        System.out.println("actualAmountOfTasks = " + actualAmountOfTasks);
-
-        //Assert.assertTrue(expectedAmountOfTasks==actualAmountOfTasks);
-
-
+        Assert.assertTrue(expectedAmountOfTasks==actualAmountOfTasks);
     }
 
     @And("user select for each of the option of Smart Collection dropdown value {string}")
