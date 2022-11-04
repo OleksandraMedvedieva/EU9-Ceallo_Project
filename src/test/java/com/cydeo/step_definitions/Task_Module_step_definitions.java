@@ -36,12 +36,12 @@ public class Task_Module_step_definitions {
     public void user_click_on_tasks_module() {
         dashboardPage.taskModule.click();
         //BrowserUtils.waitFor(2);
-        //BrowserUtils.waitForVisibility(tasksModulePage.visibilityCheck,5);
+        BrowserUtils.waitForVisibility(tasksModulePage.visibilityCheck,5);
     }
 
     @When("user click on Add list button")
     public void user_click_on_add_list_button() {
-        BrowserUtils.waitForVisibility(tasksModulePage.visibilityCheck,5);
+        //BrowserUtils.waitForVisibility(tasksModulePage.visibilityCheck,5);
         tasksModulePage.addListButton.click();
     }
 
@@ -74,6 +74,7 @@ public class Task_Module_step_definitions {
         int indexNumber = tasksModulePage.colorPickers.size();
         String locator = "((//div[@class='colorpicker'])"+"["+indexNumber+"]//li)["+colorNumber+"]";
         WebElement color = Driver.getDriver().findElement(By.xpath(locator));
+        BrowserUtils.waitForVisibility(color,2);
         color.click();
     }
     @And("verify user see error message: The name {string} is already used.")
@@ -172,6 +173,7 @@ public class Task_Module_step_definitions {
         }
         Assert.assertTrue(expectedAmountOfTasks==actualAmountOfTasks);
         tasksModulePage.deleteAllListsFromTheMenu();
+
     }
 
     @And("user select for each of the option of Smart Collection dropdown value {string}")

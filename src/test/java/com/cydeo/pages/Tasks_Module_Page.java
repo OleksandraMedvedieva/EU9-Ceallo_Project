@@ -77,7 +77,7 @@ public class Tasks_Module_Page {
     @FindBy(xpath = "//button[@class='inline task-star reactive no-nav']/span")
     public List<WebElement> allStarIconsFromTheCurrentList;
 
-    @FindBy (xpath = "//button[@class='icon action-item__menutoggle icon-checkmark--down']")
+    @FindBy (xpath = "//span[@title='Add List…']")
     public WebElement visibilityCheck;
 
     @FindBy(xpath = "//*[starts-with(@id,'list')]")
@@ -162,7 +162,6 @@ public class Tasks_Module_Page {
         for (WebElement eachList : allListsMenu) {
             if (eachList.getText().equals(list1) || eachList.getText().equals(list2) || eachList.getText().equals(list3)) {
                 eachList.click();
-                //List<WebElement> allCheckBoxesFromTheList = allCheckBoxesFromTheCurrentList;
                 try{
                     allCheckBoxesFromTheCurrentList.get(0).click();
                 }catch (RuntimeException e){
@@ -175,6 +174,7 @@ public class Tasks_Module_Page {
         deleteListFromMenu(list2);
         deleteListFromMenu(list3);
         deleteListFromMenu(list4);
+        BrowserUtils.waitFor(9);
 
     }
 
