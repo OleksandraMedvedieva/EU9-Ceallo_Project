@@ -11,6 +11,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TestMenu {
@@ -18,6 +20,40 @@ public class TestMenu {
     Tasks_Module_Page tasksModulePage = new Tasks_Module_Page();
     Dashboard_Page dashboardPage = new Dashboard_Page();
     Faker faker = new Faker();
+
+    @Test
+    public void testAfter() throws InterruptedException {
+        loginPage.login();
+        dashboardPage.taskModule.click();
+        Thread.sleep(3000);
+        String list1="9";
+        String list2="Ne";
+        String list3="New Task";
+        String list4="The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt";
+        for (WebElement eachList : tasksModulePage.allListsMenu) {
+            if (eachList.getText().equals(list1) || eachList.getText().equals(list2) || eachList.getText().equals(list3)) {
+                eachList.click();
+                List<WebElement> allCheckBoxesFromTheList = tasksModulePage.allCheckBoxesFromTheCurrentList;
+                allCheckBoxesFromTheList.get(0).click();
+            }
+        }
+
+        tasksModulePage.deleteListFromMenu(list1);
+        tasksModulePage.deleteListFromMenu(list2);
+        tasksModulePage.deleteListFromMenu(list3);
+        tasksModulePage.deleteListFromMenu(list4);
+
+
+
+
+
+
+
+
+
+
+
+    }
 
     @Test
     public void status() throws InterruptedException {
