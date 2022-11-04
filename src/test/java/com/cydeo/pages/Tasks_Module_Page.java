@@ -154,7 +154,6 @@ public class Tasks_Module_Page {
             }
         }
     }
-
     public void deleteAllListsFromTheMenu(){
         String list1="9";
         String list2="Ne";

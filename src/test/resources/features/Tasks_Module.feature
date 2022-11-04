@@ -16,7 +16,7 @@ Feature: Tasks Module Functionality
     And user click on Tasks module
 
   @CEA-988
-   # @Order(1)
+    @Order(1)
   Scenario Outline: Verify user can create a new list of task by providing valid task name
   and set it color
     When user click on Add list button
@@ -28,8 +28,8 @@ Feature: Tasks Module Functionality
       | colorNumber | newListName                                                                                                                                                                                                                                                     |
       | 1           | 9                                                                                                                                                                                                                                                               |
       | 2           | Ne                                                                                                                                                                                                                                                              |
-    #  | 3           | New Task                                                                                                                                                                                                                                                        |
-    #  | 4           | The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt |
+      | 3           | New Task                                                                                                                                                                                                                                                        |
+      | 4           | The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt |
 
   @CEA-990
     @Order(2)
@@ -70,8 +70,8 @@ Feature: Tasks Module Functionality
       | Ne       | Java questions |
       | New Task | @gmail.$$@@123 |
 
-@CEA-993
-  @Order(5)
+  @CEA-993
+    @Order(5)
   Scenario Outline: Verify if user can create a new task from All and Current tabs (app default tabs)
     When user clicks on the Settings
     And user select one of the options "<options>" from a Default List dropdown
@@ -80,11 +80,11 @@ Feature: Tasks Module Functionality
     Then verify new task name "<newTask>" appears under the related list.
     Examples: options,new task names
       | newTask       | tabName | options |
-     | *             | All     | 9       |
+      | *             | All     | 9       |
       | New task name | Current | Ne      |
 
   @CEA-994
-   @Order(6)
+    @Order(6)
   Scenario Outline: Verify if user can add any task to the list of Completed tasks by clicking on the checkbox near the task name
     When user clicks on one of tab from the menu "<tabName>"
     And user clicks on the checkbox near the task name "<newTask>" and see 1 Completed Task link on the screen
@@ -93,10 +93,10 @@ Feature: Tasks Module Functionality
     Examples: task names
       | newTask       | tabName |
       | *             | 9       |
-    | New task name | Ne      |
+      | New task name | Ne      |
 
   @CEA-995
-     @Order(7)
+    @Order(7)
   Scenario Outline: Verify if user can add any task to the list of Important tasks by clicking on the star icon on the right side of task line
     When user clicks on one of tab from the menu "<tabName>"
     And user clicks on the star icon near the task name"<newTask>" and this icon color is changes
@@ -107,8 +107,8 @@ Feature: Tasks Module Functionality
       | *              | 9       |
       | Java questions | Ne      |
 
-    @CEA-996
-   # @Order(8)
+  @CEA-996
+  @Order(8)
   Scenario: Verify if user can see the number of all uncompleted tasks next to the Current tab
     When user clicks on the Settings
     And user select for each of the option of Smart Collection dropdown value "Visible"
