@@ -35,8 +35,8 @@ public class Task_Module_step_definitions {
     @Given("user click on Tasks module")
     public void user_click_on_tasks_module() {
         dashboardPage.taskModule.click();
-        //BrowserUtils.waitFor(2);
-        BrowserUtils.waitForVisibility(tasksModulePage.visibilityCheck,5);
+        BrowserUtils.waitFor(5);
+        //BrowserUtils.waitForVisibility(tasksModulePage.visibilityCheck,5);
     }
 
     @When("user click on Add list button")

@@ -30,7 +30,19 @@ public class Dashboard_Page {
     public List<WebElement> allUserStatuses;
 
     @FindBy(xpath = "//button[@class='action-item action-item--single header-close icon-close undefined undefined has-tooltip']")
-    public WebElement close;
+    public WebElement closeStatusWindow;
+
+    @FindBy(xpath = "//label[normalize-space(text())='Online']")
+    public WebElement statusButton_Online;
+
+    @FindBy(xpath = "//label[normalize-space(text())='Do not disturb']")
+    public WebElement statusButton_DoNotDisturb;
+
+    @FindBy(xpath = "//label[normalize-space(text())='Away']")
+    public WebElement statusButton_Away;
+
+    @FindBy(xpath = "//label[normalize-space(text())='Invisible']")
+    public WebElement statusButton_Invisible;
 
 
 
